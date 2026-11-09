@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Care and Education | Helping Hand Haven</title>
+    <meta name="description" content="See how Helping Hand Haven provides a stable home, education, and everyday care for children in Durban, KwaZulu-Natal.">
+    <meta name="keywords" content="children's home Durban, child care, education support, safe home, vulnerable children KwaZulu-Natal, Helping Hand Haven services">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== Header and Navigation ===== -->
+    <header>
+        <div class="logo">
+            <a href="index.html">Helping Hand Haven</a>
+        </div>
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-controls="primary-navigation">
+        <label class="nav-toggle-label" for="nav-toggle">
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Toggle navigation menu</span>
+        </label>
+        <nav id="primary-navigation" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="what-we-do.html" aria-current="page">What We Do</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="enquiry.html" class="btn btn-donate">Donate</a>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+
+        <section class="page-title">
+            <h1>What We Do</h1>
+            <p>Three pillars support every child at Helping Hand Haven: a home, an education, and consistent care.</p>
+        </section>
+
+        <!-- Search and sort the services on this page -->
+        <section class="service-tools" aria-label="Find a service">
+            <div class="form-group">
+                <label for="service-search">Search services</label>
+                <input type="search" id="service-search" placeholder="Try education or care" aria-controls="service-list">
+            </div>
+            <div class="form-group">
+                <label for="service-sort">Sort services</label>
+                <select id="service-sort" aria-controls="service-list">
+                    <option value="default">Original order</option>
+                    <option value="az">Name: A to Z</option>
+                    <option value="za">Name: Z to A</option>
+                </select>
+            </div>
+        </section>
+        <p id="service-results" class="filter-status" role="status" aria-live="polite"></p>
+        <p id="service-empty" class="filter-status" role="status" hidden>No services match your search. Try another word.</p>
+        <div class="service-list" id="service-list">
+        <!-- Home -->
+        <section class="service-block" data-service-card data-reveal>
+            <div class="service-image">
+                <img src="https://images.pexels.com/photos/4221413/pexels-photo-4221413.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1" srcset="https://images.pexels.com/photos/4221413/pexels-photo-4221413.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=480&amp;dpr=1 480w, https://images.pexels.com/photos/4221413/pexels-photo-4221413.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;dpr=1 800w, https://images.pexels.com/photos/4221413/pexels-photo-4221413.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1 1200w, https://images.pexels.com/photos/4221413/pexels-photo-4221413.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" alt="Bedroom at Helping Hand Haven shared by the children" loading="lazy" decoding="async">
+            </div>
+            <div class="service-text">
+                <h2>A Home, Not Just a Shelter</h2>
+                <p>Children at Helping Hand Haven live together as siblings, in a warm and stable environment. This isn't a temporary stopover &mdash; it's a long-term home with routines, rules, and love, just like any household.</p>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="service-block reverse" data-service-card data-reveal>
+            <div class="service-image">
+                <img src="https://images.pexels.com/photos/8617993/pexels-photo-8617993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1" srcset="https://images.pexels.com/photos/8617993/pexels-photo-8617993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=480&amp;dpr=1 480w, https://images.pexels.com/photos/8617993/pexels-photo-8617993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;dpr=1 800w, https://images.pexels.com/photos/8617993/pexels-photo-8617993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1 1200w, https://images.pexels.com/photos/8617993/pexels-photo-8617993.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" alt="Children studying at a table with school books" loading="lazy" decoding="async">
+            </div>
+            <div class="service-text">
+                <h2>Education That Opens Doors</h2>
+                <p>Every child is enrolled in school and supported with homework, tutoring, and school supplies. We believe education is the clearest path out of hardship and into opportunity.</p>
+            </div>
+        </section>
+
+        <!-- Care -->
+        <section class="service-block" data-service-card data-reveal>
+            <div class="service-image">
+                <img src="https://images.pexels.com/photos/7879719/pexels-photo-7879719.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1" srcset="https://images.pexels.com/photos/7879719/pexels-photo-7879719.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=480&amp;dpr=1 480w, https://images.pexels.com/photos/7879719/pexels-photo-7879719.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800&amp;dpr=1 800w, https://images.pexels.com/photos/7879719/pexels-photo-7879719.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200&amp;dpr=1 1200w, https://images.pexels.com/photos/7879719/pexels-photo-7879719.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600&amp;dpr=1 1600w" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" alt="A caregiver comforting a child" loading="lazy" decoding="async">
+            </div>
+            <div class="service-text">
+                <h2>Care That Feels Like Family</h2>
+                <p>Our caregivers provide the guidance, structure, and affection every child needs &mdash; emotional support included, not just physical needs met.</p>
+            </div>
+        </section>
+
+        </div>
+
+        <!-- What's included list -->
+        <section class="whats-included">
+            <h2>What Every Child Receives</h2>
+            <ul>
+                <li>A bed, meals, and clothing</li>
+                <li>Full-time schooling and tutoring support</li>
+                <li>Access to healthcare</li>
+                <li>Emotional support and counselling when needed</li>
+                <li>A sense of belonging as part of a family</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-contact">
+            <address>
+                Helping Hand Haven<br>
+                Durban, KwaZulu-Natal<br>
+                South Africa<br>
+                Email: <a href="mailto:info@helpinghandhaven.org.za">info@helpinghandhaven.org.za</a>
+            </address>
+        </div>
+        <div class="footer-social">
+            <a href="mailto:info@helpinghandhaven.org.za">Email us</a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 Helping Hand Haven. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,533 @@
+/* ==========================================================
+   Helping Hand Haven - styles.css
+   Sections: 1 Variables  2 Base  3 Typography  4 Layout
+             5 Components  6 Pseudo-classes  7 Responsive
+   ========================================================== */
+
+/* Fonts: Poppins (headings) + Open Sans (body), as per proposal.
+   They are loaded with <link> tags in the <head> of every HTML page (faster than @import). */
+
+/* ---------- 1. CSS VARIABLES (colour scheme from proposal) ---------- */
+:root {
+  --blue: #00A8E8;
+  --gold: #FFB703;
+  --green: #38B000;
+  --green-dark: #2D7A0F;
+  --bg: #FFFFFF;
+  --bg-soft: #F8FAFC;
+  --text: #0F172A;
+  --blue-dark: #0077A8;
+  --radius: 0.75rem;
+  --shadow: 0 0.25rem 1rem rgba(15, 23, 42, 0.1);
+  --max-width: 75rem;
+
+  /* Typography scale (ratio 1.25 - "major third"), all in rem so it scales with the user's settings */
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.5625rem;
+  --step-3: 1.9531rem;
+  --step-4: 2.4414rem;
+}
+
+/* ---------- 2. BASE / DEFAULT STYLES ---------- */
+/* CSS reset: removes each browser's default margins/padding so every browser starts equal */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 1rem;            /* 16px base, relative everywhere else */
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* Responsive images: never overflow their container */
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--blue-dark); }
+
+main { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+section { margin: 3rem 0; }
+
+/* ---------- 3. TYPOGRAPHY ---------- */
+h1, h2, h3 {
+  font-family: 'Poppins', Arial, sans-serif;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+h1 { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: var(--step-3); font-weight: 600; letter-spacing: -0.005em; }
+h3 { font-size: var(--step-1); font-weight: 600; color: var(--blue-dark); }
+p  { margin: 0 0 1rem; font-weight: 400; letter-spacing: 0.01em; }
+strong { font-weight: 600; }
+small { font-size: 0.85rem; color: #475569; }
+blockquote { margin: 0; font-style: italic; font-size: 1.2rem; }
+cite { font-weight: 600; font-style: normal; }
+
+/* ---------- 4. LAYOUT STRUCTURE (Flexbox + Grid) ---------- */
+/* Header: flexbox row - logo | nav | donate button */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  background: var(--bg);
+  border-bottom: 0.2rem solid var(--blue);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo a {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.25rem 0;
+  border-bottom: 0.15rem solid transparent;
+}
+
+/* Hamburger toggle: hidden on desktop, shown on tablet/mobile (see section 7) */
+.nav-toggle { display: none; }
+.nav-toggle-label { display: none; cursor: pointer; padding: 0.5rem; }
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  width: 1.75rem;
+  height: 0.2rem;
+  background: var(--text);
+  border-radius: 0.2rem;
+  position: relative;
+  transition: transform 0.25s, background-color 0.25s;
+}
+.nav-toggle-label span::before, .nav-toggle-label span::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-label span::before { top: -0.5rem; }
+.nav-toggle-label span::after  { top: 0.5rem; }
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Two-column sections: flexbox */
+.hero, .our-history, .service-block {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.hero-text, .history-text, .service-text,
+.hero-image, .history-image, .service-image { flex: 1 1 50%; }
+.service-block.reverse { flex-direction: row-reverse; }
+
+/* Card / photo / team / gallery layouts: CSS Grid */
+.core-offerings,
+.mission-vision,
+.locations {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+.photo-grid, .team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+/* Footer: named grid areas (grid-template-areas) make the layout easy to read and rearrange */
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "contact social links"
+    "copy    copy   copy";
+  gap: 1.5rem;
+}
+.footer-contact { grid-area: contact; }
+.footer-social  { grid-area: social; }
+.footer-links   { grid-area: links; }
+.copyright      { grid-area: copy; }
+
+/* ---------- 5. VISUAL STYLES / COMPONENTS ---------- */
+.page-title {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin: 2rem 0;
+  background: linear-gradient(135deg, var(--bg-soft), #e0f4fc);
+  border-radius: var(--radius);
+}
+.page-title h1 { color: var(--blue-dark); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  border: 0.15rem solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.btn-primary   { background: var(--blue-dark); color: #fff; }
+.btn-secondary { background: transparent; color: var(--blue-dark); border-color: var(--blue); }
+.btn-donate    { background: var(--gold); color: var(--text); }
+
+/* Images */
+.hero-image img, .history-image img, .service-image img,
+.photo-grid img, .gallery-grid img {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  filter: brightness(1.06);
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+.team-grid img {
+  width: 10rem; height: 10rem; aspect-ratio: 1 / 1;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: brightness(1.06);
+  border: 0.25rem solid var(--gold);
+}
+figure { margin: 0; text-align: center; }
+figcaption { margin-top: 0.5rem; font-weight: 600; }
+
+/* Cards */
+.card {
+  background: var(--bg-soft);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border-top: 0.3rem solid var(--green);
+  box-shadow: var(--shadow);
+}
+.mission-vision .card:nth-child(2) { border-top-color: var(--gold); }
+
+/* Lists, table */
+.how-to-help ol, .whats-included ul { padding-left: 1.5rem; }
+.how-to-help li, .whats-included li { margin-bottom: 0.5rem; }
+.whats-included {
+  background: var(--bg-soft);
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius);
+  border-left: 0.3rem solid var(--green);
+}
+table { width: 100%; border-collapse: collapse; box-shadow: var(--shadow); }
+th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 0.0625rem solid #e2e8f0; }
+th { background: var(--blue-dark); color: #fff; font-family: 'Poppins', Arial, sans-serif; }
+tbody tr:nth-child(even) { background: var(--bg-soft); }
+
+/* Testimonial + CTA banner */
+.testimonial {
+  background: var(--bg-soft);
+  padding: 2rem;
+  border-radius: var(--radius);
+  border-left: 0.4rem solid var(--gold);
+}
+.testimonial footer { display: block; grid-template-areas: none; margin-top: 1rem; background: none; padding: 0; color: var(--text); }
+.cta-banner {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue-dark), var(--green-dark));
+  border-radius: var(--radius);
+}
+.cta-banner h2 { color: #fff; }
+
+/* Forms */
+.contact-form, .enquiry-form { max-width: 40rem; margin-left: auto; margin-right: auto; }
+.form-group { margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.35rem; }
+label, legend { font-weight: 600; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="search"], select, textarea {
+  padding: 0.75rem;
+  font: inherit;
+  border: 0.125rem solid #cbd5e1;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+fieldset { border: 0.125rem solid #cbd5e1; border-radius: 0.5rem; padding: 1rem 1.25rem; }
+legend { padding: 0 0.5rem; }
+fieldset label { display: block; font-weight: 400; margin: 0.25rem 0; }
+
+/* Contact page */
+.location {
+  background: var(--bg-soft);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+address { font-style: normal; line-height: 1.8; }
+.map-placeholder {
+  padding: 4rem 1rem;
+  text-align: center;
+  background: var(--bg-soft);
+  border: 0.15rem dashed var(--blue);
+  border-radius: var(--radius);
+}
+
+/* Maps: two side by side, matching the location cards above */
+.map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+.map-frame { min-width: 0; }
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--text);
+  color: #e2e8f0;
+}
+footer a { color: var(--gold); display: block; margin-bottom: 0.4rem; text-decoration: none; }
+.copyright { text-align: center; margin: 0; font-size: 0.85rem; }
+
+/* ---------- 6. PSEUDO-CLASSES ---------- */
+.nav-links a:hover,
+.nav-links a:focus,
+.nav-links a[aria-current="page"] { color: var(--blue-dark); border-bottom-color: var(--blue); }
+.btn:hover { transform: translateY(-0.125rem); }
+.btn-primary:hover   { background: var(--blue-dark); }
+.btn-secondary:hover { background: var(--blue-dark); color: #fff; }
+.btn-donate:hover    { background: #e6a400; }
+a:focus-visible, .btn:focus-visible { outline: 0.2rem solid var(--blue-dark); outline-offset: 0.2rem; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 0.2rem rgba(0, 168, 232, 0.25); }
+footer a:hover { text-decoration: underline; }
+.photo-grid figure:hover img, .gallery-grid figure:hover img { transform: scale(1.03); transition: transform 0.3s; }
+.card:hover { transform: translateY(-0.25rem); transition: transform 0.2s; }
+.how-to-help li::marker { color: var(--green); font-weight: 700; }
+
+/* :active = while the mouse button is held down */
+.btn:active { transform: translateY(0); }
+/* :first-child / :last-child / :nth-child = structural pseudo-classes */
+.footer-links a:first-child { font-weight: 600; }
+tbody tr:hover { background: #e0f4fc; }
+/* :visited, :checked, :required, :invalid, ::placeholder, ::selection */
+main p a:visited { color: #5b3f9a; }
+input[type="radio"]:checked + label, input:checked { accent-color: var(--green); }
+input:required:invalid:focus, textarea:required:invalid:focus { border-color: #dc2626; box-shadow: 0 0 0 0.2rem rgba(220, 38, 38, 0.2); }
+::placeholder { color: #94a3b8; }
+::selection { background: var(--gold); color: var(--text); }
+/* Hamburger icon animates into an X when the hidden checkbox is checked */
+.nav-toggle:focus-visible + .nav-toggle-label { outline: 0.2rem solid var(--blue-dark); outline-offset: 0.2rem; }
+.nav-toggle:checked + .nav-toggle-label span { background: transparent; }
+.nav-toggle:checked + .nav-toggle-label span::before { transform: translateY(0.5rem) rotate(45deg); }
+.nav-toggle:checked + .nav-toggle-label span::after  { transform: translateY(-0.5rem) rotate(-45deg); }
+/* Respect users who ask their device for less motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+
+
+/* Search controls, live results, and service cards */
+.service-tools, .gallery-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 24rem));
+  justify-content: center;
+  align-items: end;
+  gap: 1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+.service-tools .form-group, .gallery-tools .form-group { margin-bottom: 0; }
+.service-list { display: grid; gap: 2rem; }
+.service-list .service-block { margin: 0; }
+.filter-status { min-height: 1.5em; margin: 0 0 1rem; text-align: center; }
+
+/* The honeypot field is hidden from visitors and assistive technology. */
+.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+button:disabled { opacity: 0.7; cursor: wait; }
+
+/* Gallery buttons and the full-size photo viewer */
+.gallery-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: zoom-in;
+}
+.gallery-open:focus-visible, button:focus-visible, select:focus-visible, input[type="search"]:focus-visible {
+  outline: 0.2rem solid var(--blue-dark);
+  outline-offset: 0.2rem;
+}
+.gallery-lightbox {
+  width: min(72rem, calc(100vw - 2rem));
+  max-width: 72rem;
+  max-height: 92vh;
+  margin: auto;
+  padding: 1rem;
+  overflow: auto;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.gallery-lightbox::backdrop { background: rgba(15, 23, 42, 0.82); }
+.gallery-lightbox figure { text-align: center; }
+.gallery-lightbox img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  margin: 0 auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: none;
+  filter: brightness(1.06);
+}
+.lightbox-topbar, .lightbox-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.lightbox-topbar { margin-bottom: 0.5rem; }
+.lightbox-topbar p { margin: 0; }
+.lightbox-close {
+  padding: 0.5rem 0.9rem;
+  border: 0.1rem solid var(--blue);
+  border-radius: 1rem;
+  background: var(--bg);
+  color: var(--blue-dark);
+  font: inherit;
+  cursor: pointer;
+}
+.lightbox-controls { justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; }
+
+/* Gentle scroll reveals run only when JavaScript and motion are available. */
+.has-scroll-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.has-scroll-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
+/* ---------- 7. RESPONSIVE DESIGN (mobile-first adjustments) ---------- */
+/* Breakpoints: Desktop (>1024px) | Large tablet (<=1024px) | Tablet (<=768px) | Mobile (<=480px) */
+
+/* Large tablet and small laptop: use an operable menu below 1025px. */
+@media (max-width: 1024px) {
+  header { padding: 0.75rem 1.5rem; }
+  .logo { order: 1; margin-right: auto; }
+  .nav-toggle {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .nav-toggle-label { display: block; order: 2; }
+  header > .btn-donate { order: 3; }
+  header > nav { order: 4; width: 100%; display: none; }
+  .nav-toggle:checked ~ nav { display: block; }
+  .nav-links { flex-direction: column; gap: 0; border-top: 0.0625rem solid #e2e8f0; }
+  .nav-links li { border-bottom: 0.0625rem solid #e2e8f0; }
+  .nav-links a { display: block; padding: 0.85rem 0.5rem; border-bottom: none; }
+}
+
+/* Tablet: 768px and below */
+@media (max-width: 768px) {
+  h1 { font-size: var(--step-3); }
+  h2 { font-size: var(--step-2); }
+
+  header { padding: 0.75rem 1rem; }
+
+  /* Multi-column sections collapse to a single column */
+  .hero, .our-history, .service-block, .service-block.reverse { flex-direction: column; }
+  .photo-grid, .team-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .map-grid { grid-template-columns: 1fr; }
+  .map-frame iframe { height: 18rem; }
+  footer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "contact social"
+      "links   links"
+      "copy    copy";
+  }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+  body { font-size: 0.95rem; }
+  h1 { font-size: var(--step-2); }
+  h2 { font-size: var(--step-1); }
+  h3 { font-size: 1.1rem; }
+  main { padding: 0 1rem; }
+  header { gap: 0.5rem; }
+  .logo a { font-size: 1.05rem; }
+  .nav-toggle-label { padding: 0.35rem; }
+  header > .btn-donate { padding: 0.45rem 0.9rem; font-size: 0.9rem; }
+  main .btn { display: block; text-align: center; margin-bottom: 0.75rem; }
+  .photo-grid, .team-grid, .gallery-grid { grid-template-columns: 1fr; }
+  footer {
+    grid-template-columns: 1fr;
+    grid-template-areas: "contact" "social" "links" "copy";
+    padding: 1.5rem 1rem;
+  }
+  .page-title { padding: 1.5rem 1rem; }
+  .gallery-lightbox { width: calc(100vw - 1rem); padding: 0.75rem; }
+  .lightbox-controls .btn { display: inline-block; width: auto; }
+  .cta-banner { padding: 2rem 1rem; }
+  .testimonial, .whats-included { padding: 1.25rem; }
+  /* Wide tables scroll sideways instead of breaking the page */
+  table { display: block; overflow-x: auto; }
+}
+
+.form-note { margin: 0.75rem 0; color: #475569; font-size: 0.9rem; }
+
+/* Accessible feedback for form submissions */
+.form-status {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-soft);
+  border-left: 0.3rem solid var(--green);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+.form-status[hidden] { display: none; }

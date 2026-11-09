@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://helpinghandhaven.org.za/sitemap.xml

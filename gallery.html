@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Photo Gallery | Helping Hand Haven</title>
+    <meta name="description" content="View photos of activities, volunteers, and everyday life at Helping Hand Haven, a children's home in Durban, South Africa.">
+    <meta name="keywords" content="Helping Hand Haven gallery, children's home photos, volunteer activities Durban, child care South Africa">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&amp;family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <!-- ===== Header and Navigation ===== -->
+    <header>
+        <div class="logo">
+            <a href="index.html">Helping Hand Haven</a>
+        </div>
+        <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-controls="primary-navigation">
+        <label class="nav-toggle-label" for="nav-toggle">
+            <span aria-hidden="true"></span>
+            <span class="visually-hidden">Toggle navigation menu</span>
+        </label>
+        <nav id="primary-navigation" aria-label="Primary navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="what-we-do.html">What We Do</a></li>
+                <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+                <li><a href="enquiry.html">Enquiry</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="enquiry.html" class="btn btn-donate">Donate</a>
+    </header>
+
+    <!-- ===== Main Content ===== -->
+    <main>
+
+        <section class="page-title">
+            <h1>Gallery</h1>
+            <p>A glimpse into everyday life, activities, and events at Helping Hand Haven.</p>
+        </section>
+
+        <!-- Search, sort, and open the photos in the gallery -->
+        <section class="gallery-tools" aria-label="Find a photo">
+            <div class="form-group">
+                <label for="gallery-search">Search photos</label>
+                <input type="search" id="gallery-search" placeholder="Try garden or crafts" aria-controls="photo-gallery">
+            </div>
+            <div class="form-group">
+                <label for="gallery-sort">Sort photos</label>
+                <select id="gallery-sort" aria-controls="photo-gallery">
+                    <option value="default">Original order</option>
+                    <option value="az">Caption: A to Z</option>
+                    <option value="za">Caption: Z to A</option>
+                </select>
+            </div>
+        </section>
+        <p id="gallery-results" class="filter-status" role="status" aria-live="polite"></p>
+        <p id="gallery-empty" class="filter-status" role="status" hidden>No photos match your search. Try another word.</p>
+        <section class="gallery-grid" id="photo-gallery" aria-label="Helping Hand Haven photo gallery">
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/garden.jpg" aria-label="View Garden playtime photo">
+                    <img src="images/garden.jpg" srcset="images/garden-480.jpg 480w, images/garden-800.jpg 800w, images/garden-1200.jpg 1200w, images/garden-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="Children playing in the garden" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Garden playtime</figcaption>
+            </figure>
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/birthday.jpg" aria-label="View Birthday celebrations photo">
+                    <img src="images/birthday.jpg" srcset="images/birthday-480.jpg 480w, images/birthday-800.jpg 800w, images/birthday-1200.jpg 1200w, images/birthday-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="Children celebrating a birthday together" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Birthday celebrations</figcaption>
+            </figure>
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/volunteer.jpg" aria-label="View Donation drive day photo">
+                    <img src="images/volunteer.jpg" srcset="images/volunteer-480.jpg 480w, images/volunteer-800.jpg 800w, images/volunteer-1200.jpg 1200w, images/volunteer-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="Volunteers helping with a donation drive" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Donation drive day</figcaption>
+            </figure>
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/art-craft.jpg" aria-label="View Arts and crafts afternoon photo">
+                    <img src="images/art-craft.jpg" srcset="images/art-craft-480.jpg 480w, images/art-craft-800.jpg 800w, images/art-craft-1200.jpg 1200w, images/art-craft-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="Children doing arts and crafts" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Arts and crafts afternoon</figcaption>
+            </figure>
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/caregivers.jpg" aria-label="View Our family, together photo">
+                    <img src="images/caregivers.jpg" srcset="images/caregivers-480.jpg 480w, images/caregivers-800.jpg 800w, images/caregivers-1200.jpg 1200w, images/caregivers-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="A group photo of the children and caregivers" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Our family, together</figcaption>
+            </figure>
+            <figure class="gallery-item" data-gallery-item data-reveal>
+                <button class="gallery-open" type="button" data-full="images/supplies.jpg" aria-label="View Back-to-school handover photo">
+                    <img src="images/supplies.jpg" srcset="images/supplies-480.jpg 480w, images/supplies-800.jpg 800w, images/supplies-1200.jpg 1200w, images/supplies-1600.jpg 1600w" sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 360px" alt="Children receiving school supplies" loading="lazy" decoding="async">
+                </button>
+                <figcaption>Back-to-school handover</figcaption>
+            </figure>
+        </section>
+
+        <dialog class="gallery-lightbox" id="gallery-lightbox" aria-labelledby="lightbox-caption">
+            <div class="lightbox-topbar">
+                <p id="lightbox-count" aria-live="polite"></p>
+                <button type="button" class="lightbox-close" aria-label="Close photo viewer">Close</button>
+            </div>
+            <figure>
+                <img id="lightbox-image" src="" alt="">
+                <figcaption id="lightbox-caption"></figcaption>
+            </figure>
+            <div class="lightbox-controls">
+                <button type="button" class="btn btn-secondary" id="lightbox-previous">Previous photo</button>
+                <button type="button" class="btn btn-secondary" id="lightbox-next">Next photo</button>
+            </div>
+        </dialog>
+
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-contact">
+            <address>
+                Helping Hand Haven<br>
+                Durban, KwaZulu-Natal<br>
+                South Africa<br>
+                Email: <a href="mailto:info@helpinghandhaven.org.za">info@helpinghandhaven.org.za</a>
+            </address>
+        </div>
+        <div class="footer-social">
+            <a href="mailto:info@helpinghandhaven.org.za">Email us</a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2026 Helping Hand Haven. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
